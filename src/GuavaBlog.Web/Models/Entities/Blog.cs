@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace GuavaBlog.Web.Models
+namespace GuavaBlog.Web
 {
     public class Blog
     {
+        public int Id { get; set; }
+
         public string Title { get; set; }
 
         public string Link { get; set; }

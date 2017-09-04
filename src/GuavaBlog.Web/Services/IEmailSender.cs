@@ -9,4 +9,21 @@ namespace GuavaBlog.Web.Services
     {
         Task SendEmailAsync(string email, string subject, string message);
     }
+
+    public interface IBlogService
+    {
+        BlogViewModel GetMetadata();
+    }
+
+    public class BlogService : IBlogService
+    {
+        public BlogViewModel GetMetadata()
+        {
+            return new BlogViewModel
+            {
+                Title = "Malisa Ncube",
+                Description = "Speaker, Blogger and Developer"
+            };
+        }
+    }
 }

@@ -1,13 +1,24 @@
-﻿<!DOCTYPE html>
+﻿@using GuavaBlog.Web.Services
+
+@inject IBlogService BlogService
+
+@{
+    var metadata = BlogService.GetMetadata();
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - GuavaBlog.Web</title>
+    <title>@metadata.Title</title>
+    <meta name="description" content="Software developer, speaker, blogger" />
+    <link rel="shortcut icon" href="@metadata.Logo"/>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/crisp.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -15,9 +26,76 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->  
+			  
+    <link rel="canonical" href="@metadata.Link" />
+    <meta name="referrer" content="origin" />
+    <link rel="next" href="http://www.malisancube.com/page/2/" />
+    
+    <meta property="og:site_name" content="@metadata.Title" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="@metadata.Title" />
+    <meta property="og:description" content="@metadata.Description" />
+    <meta property="og:url" content="@metadata.Link" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="@metadata.Title" />
+    <meta name="twitter:description" content="@metadata.Description" />
+    <meta name="twitter:url" content="@metadata.Link" />
+    
+    <script type="application/ld+json">
+    {
+        "@@context": "https://schema.org",
+        "@@type": "Website",
+        "publisher": "@metadata.Title",
+        "url": "@metadata.Link",
+        "description": "@metadata.Description"
+    }
+    </script>
+
+    <meta name="generator" content="Ghost 0.8" />
+<link rel="alternate" type="application/rss+xml" title="@metadata.Title" href="@($"{metadata.Link}/rss/")" />
+
 </head>
-<body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+<body class="home-template">
+    
+    		<header id="header">
+            <a id="logo" href="@metadata.Link"><img src="@metadata.Logo" alt="@metadata.Title" /></a>
+            <h1><a href="@metadata.Link">@metadata.Title</a></h1>
+            <p>@metadata.Description</p>
+            <div id="follow-icons">
+                <a href="http://facebook.com/malisa.ncube"><i class="fa fa-facebook-square fa-2x"></i></a>
+                <a href="http://twitter.com/malisancube"><i class="fa fa-twitter-square fa-2x"></i></a>
+                <a href="http://linkedin.com/in/malisa-ncube-a9b28b1"><i class="fa fa-linkedin-square fa-2x"></i></a>
+                <a href="mailto:inbox@malisancube.com"><i class="fa fa-envelope-square fa-2x"></i></a>
+                <a href="http://www.malisancube.com/rss"><i class="fa fa-rss-square fa-2x"></i></a> 
+            </div>                                                                  
+
+		    <!--
+		    <a href="http://github.com/username"><i class="fa fa-github-square fa-2x"></i></a>
+		    <a href="http://plus.google.com/+username"><i class="fa fa-google-plus-square fa-2x"></i></a>
+		    <a href="http://instagram.com/username"><i class="fa fa-instagram fa-2x"></i></a>
+		    <a href="http://vimeo.com/username"><i class="fa fa-vimeo-square fa-2x"></i></a>
+		    <a href="http://youtube.com/username"><i class="fa fa-youtube-square fa-2x"></i></a>
+		    <a href="http://flickr.com/username"><i class="fa fa-flickr fa-2x"></i></a>
+		    <a href="http://pinterest.com/username"><i class="fa fa-pinterest-square fa-2x"></i></a>
+		    <a href="http://username.tumblr.com"><i class="fa fa-tumblr-square fa-2x"></i></a>
+		    -->
+                
+		        <h6><a href="@metadata.Link">Home</a></h6>
+		        <h6><a href="@metadata.Link">Blog</a></h6>
+
+		        <p>I develop software for the cloud/web, mobile and enterprise. A failed stand-up comedian who loves music.</p>
+		    </header>
+
+		    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
