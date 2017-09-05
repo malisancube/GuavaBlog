@@ -1,13 +1,17 @@
-﻿namespace GuavaBlog.Web
+﻿using System.Collections.Generic;
+
+namespace GuavaBlog.Web
 {
     public class BlogViewModel
     {
 
         public string Title { get; set; }
 
-        public string Link { get; set; }
+        public string Url { get; set; }
 
         public string Description { get; set; }
+
+        public string Bio { get; set; }
 
         public string Logo { get; set; }
 
@@ -22,5 +26,7 @@
         public string FacebookLink { get; set; }
 
         public string Theme { get; set; }
+
+        public List<MenuOption> MenuOptions { get; set; }
     }
 }

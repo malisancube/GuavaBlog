@@ -15,17 +15,27 @@
     <title>@metadata.Title</title>
     <meta name="description" content="Software developer, speaker, blogger" />
     <link rel="shortcut icon" href="@metadata.Logo"/>
+    
+    <!-- May need to have a local fallback -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,700italic,300,700' rel='stylesheet' type='text/css' />
+    <link href='//fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css' />
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/lib/highlight/src/styles/default.css"/>
         <link rel="stylesheet" href="~/css/crisp.css" />
     </environment>
     <environment exclude="Development">
+
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"/>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.css"
+              asp-fallback-href="~/lib/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css"
+              asp-fallback-href="~/lib/highlight/src/styles/default.css"/>
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true"/>
     </environment>
     
     <meta name="HandheldFriendly" content="True" />
@@ -37,7 +47,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->  
 			  
-    <link rel="canonical" href="@metadata.Link" />
+    <link rel="canonical" href="@metadata.Url" />
     <meta name="referrer" content="origin" />
     <link rel="next" href="http://www.malisancube.com/page/2/" />
     
@@ -45,31 +55,31 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="@metadata.Title" />
     <meta property="og:description" content="@metadata.Description" />
-    <meta property="og:url" content="@metadata.Link" />
+    <meta property="og:url" content="@metadata.Url" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="@metadata.Title" />
     <meta name="twitter:description" content="@metadata.Description" />
-    <meta name="twitter:url" content="@metadata.Link" />
+    <meta name="twitter:url" content="@metadata.Url" />
     
     <script type="application/ld+json">
     {
         "@@context": "https://schema.org",
         "@@type": "Website",
         "publisher": "@metadata.Title",
-        "url": "@metadata.Link",
+        "url": "@metadata.Url",
         "description": "@metadata.Description"
     }
     </script>
 
     <meta name="generator" content="Ghost 0.8" />
-<link rel="alternate" type="application/rss+xml" title="@metadata.Title" href="@($"{metadata.Link}/rss/")" />
+<link rel="alternate" type="application/rss+xml" title="@metadata.Title" href="@($"{metadata.Url}/rss/")" />
 
 </head>
 <body class="home-template">
     
 <header id="header">
-    <a id="logo" href="@metadata.Link"><img src="@metadata.Logo" alt="@metadata.Title" /></a>
-    <h1><a href="@metadata.Link">@metadata.Title</a></h1>
+    <a id="logo" href="@metadata.Url"><img src="@metadata.Logo" alt="@metadata.Title" /></a>
+    <h1><a href="@metadata.Url">@metadata.Title</a></h1>
     <p>@metadata.Description</p>
     <div id="follow-icons">
         <a href="http://facebook.com/malisa.ncube"><i class="fa fa-facebook-square fa-2x"></i></a>
@@ -89,29 +99,26 @@
     <a href="http://pinterest.com/username"><i class="fa fa-pinterest-square fa-2x"></i></a>
     <a href="http://username.tumblr.com"><i class="fa fa-tumblr-square fa-2x"></i></a>
     -->
-                
-    <h6><a href="@metadata.Link">Home</a></h6>
-    <h6><a href="@metadata.Link">Blog</a></h6>
-
-    <p>I develop software for the cloud/web, mobile and enterprise. A failed stand-up comedian who loves music.</p>
-</header>
     
+    @foreach (var option in metadata.MenuOptions) {
+        <h6><a href="@option.Url">@option.Description</a></h6>
+    }
 
-
-
-
+    <p>@metadata.Bio</p>
+</header>
     <div class="container body-content">
         @RenderBody()
         <hr />
        
         <footer id="footer">
-            <section id="footer-message">© 2017 Malisa Ncube. All rights reserved. Powered by <a href="https://github.com/malisancube/guavablog.git" target="_blank">Guava</a>. </section>
+            <section id="footer-message">© @DateTime.Today.Year @metadata.Title. All rights reserved. Powered by <a href="https://github.com/malisancube/guavablog.git" target="_blank">Guava</a>. </section>
         </footer>
     </div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/highlight/src/highlight.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
@@ -127,9 +134,11 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
     @RenderSection("Scripts", required: false)
+    <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
