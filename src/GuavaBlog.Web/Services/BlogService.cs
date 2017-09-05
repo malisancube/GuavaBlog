@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using GuavaBlog.Web.Models;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace GuavaBlog.Web.Services
 {
-    public interface IEmailSender
-    {
-        Task SendEmailAsync(string email, string subject, string message);
-    }
-
-    public interface IBlogService
-    {
-        BlogViewModel GetMetadata();
-    }
-
     public class BlogService : IBlogService
     {
         public BlogViewModel GetMetadata()

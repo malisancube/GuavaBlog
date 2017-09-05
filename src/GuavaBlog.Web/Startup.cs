@@ -39,6 +39,7 @@ namespace GuavaBlog.Web
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped<IBlogService, BlogService>();
+            services.AddScoped<IPostService, PostService>();
 
             services.AddMvc();
         }

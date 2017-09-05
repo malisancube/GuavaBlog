@@ -5,14 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GuavaBlog.Web.Models;
+using GuavaBlog.Web.Services;
 
 namespace GuavaBlog.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IPostService postService;
+
+        public HomeController(IPostService postService)
+        {
+            this.postService = postService;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var posts = postService.GetExcerpts();
+            return View(posts);
         }
 
         public IActionResult About()
