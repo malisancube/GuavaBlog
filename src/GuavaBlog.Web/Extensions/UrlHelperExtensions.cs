@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using GuavaBlog.Web.Controllers;
 
@@ -26,4 +27,24 @@ namespace Microsoft.AspNetCore.Mvc
                 protocol: scheme);
         }
     }
+	
+	public static class PostExtensions
+	{
+		public static string GetSlug(string title)
+		{
+			if(string.IsNullOrWhiteSpace(title))
+				return string.Empty;
+
+			var replacements = @" ""'?*$.,+&:;\/#".ToCharArray();
+
+			var splits = title.Split(replacements, StringSplitOptions.RemoveEmptyEntries);
+			var sb = new StringBuilder();
+			foreach (var s in splits)
+			{
+				sb.Append(s);
+				sb.Append("-");
+			}
+			return sb.ToString(0, sb.Length - 1).ToLower();
+		}
+	}
 }

@@ -5,6 +5,17 @@
     <UserSecretsId>aspnet-GuavaBlog.Web-EBE081D3-DF91-4C68-9453-37EC1F81ED2F</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="wwwroot\NewFolder\**" />
+    <Compile Remove="wwwroot\styles\icons\**" />
+    <Content Remove="wwwroot\NewFolder\**" />
+    <Content Remove="wwwroot\styles\icons\**" />
+    <EmbeddedResource Remove="wwwroot\NewFolder\**" />
+    <EmbeddedResource Remove="wwwroot\styles\icons\**" />
+    <None Remove="wwwroot\NewFolder\**" />
+    <None Remove="wwwroot\styles\icons\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
@@ -16,6 +27,16 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\spinners.css" />
+    <None Include="wwwroot\styles\admin.less" />
+    <None Include="wwwroot\styles\eliteadmin.less" />
+    <None Include="wwwroot\styles\pages.less" />
+    <None Include="wwwroot\styles\responsive.less" />
+    <None Include="wwwroot\styles\sidebar-nav.less" />
+    <None Include="wwwroot\styles\variables.less" />
   </ItemGroup>
 
 </Project>

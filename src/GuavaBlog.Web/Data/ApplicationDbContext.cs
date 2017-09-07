@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using GuavaBlog.Web.Models;
+using GuavaBlog.Web;
 
 namespace GuavaBlog.Web.Data
 {
@@ -30,5 +31,7 @@ namespace GuavaBlog.Web.Data
         public DbSet<Comment> Comments { get; set; }
 
         public DbSet<Tag> Tags { get; set; }
+
+        public DbSet<GuavaBlog.Web.PostViewModel> PostViewModel { get; set; }
     }
 }

@@ -1,0 +1,12 @@
+{
+  "name": "guavablog",
+  "version": "1.0.0",
+  "description": "blog engine",
+  "main": "gulpfile.js",
+  "author": "Malisa Ncube",
+  "private": true,
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-less": "3.3.0"
+  }
+}
