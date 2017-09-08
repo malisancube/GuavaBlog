@@ -28,12 +28,12 @@ namespace GuavaBlog.Web
         {
             var connection = Configuration["Production:SqliteConnectionString"];
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<GuavaDbContext>(options =>
                 options.UseSqlite(connection)
             );
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<GuavaDbContext>()
                 .AddDefaultTokenProviders();
 
             // Add application services.
@@ -70,6 +70,9 @@ namespace GuavaBlog.Web
 
                 routes.MapRoute("blog_route", "post/{*slug}",
                     defaults: new { controller = "Home", action = "Read" });
+
+                routes.MapRoute("tag_route", "tag/{*slug}",
+                    defaults: new { controller = "Home", action = "Tag" });
             });
         }
     }

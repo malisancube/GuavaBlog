@@ -194,5 +194,13 @@ WriteLine(moreLetters.alpha);
                 Url = "avoid-getting-hacked-watch-out-for-trojans"
             };
         }
+
+        public List<PostViewModel> GetPostsByTag(string tag)
+        {
+            return new List<PostViewModel>()
+            {
+                new PostViewModel { }
+            };
+        }
     }
 }

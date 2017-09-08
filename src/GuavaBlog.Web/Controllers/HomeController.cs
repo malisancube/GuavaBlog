@@ -31,6 +31,12 @@ namespace GuavaBlog.Web.Controllers
             return View(posts);
         }
 
+        public IActionResult Tag(string tag)
+        {
+            var posts = postService.GetPostsByTag(tag);
+            return View(posts);
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

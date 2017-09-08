@@ -10,5 +10,6 @@ namespace GuavaBlog.Web.Services
         string GetPost(int postId);
         void SavePost(PostViewModel post);
         PostViewModel GetPostBySlug(string slug);
+        List<PostViewModel> GetPostsByTag(string tag);
     }
 }

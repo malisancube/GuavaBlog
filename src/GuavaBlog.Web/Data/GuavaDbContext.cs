@@ -9,9 +9,9 @@ using GuavaBlog.Web;
 
 namespace GuavaBlog.Web.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class GuavaDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public GuavaDbContext(DbContextOptions<GuavaDbContext> options)
             : base(options)
         {
         }
@@ -32,6 +32,5 @@ namespace GuavaBlog.Web.Data
 
         public DbSet<Tag> Tags { get; set; }
 
-        public DbSet<GuavaBlog.Web.PostViewModel> PostViewModel { get; set; }
     }
 }
