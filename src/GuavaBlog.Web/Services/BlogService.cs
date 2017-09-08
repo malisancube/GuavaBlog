@@ -11,7 +11,7 @@ namespace GuavaBlog.Web.Services
             return new BlogViewModel
             {
                 Title = "Malisa Ncube",
-                Description = "Speaker, Blogger and Developer",
+                Description = "Software developer, speaker, blogger",
                 Logo = "/content/images/Malisa-Ncube.png",
                 Bio = "I develop software for the cloud/web, mobile and enterprise. A failed stand-up comedian who loves music.",
                 Url = "www.malisancube.com",

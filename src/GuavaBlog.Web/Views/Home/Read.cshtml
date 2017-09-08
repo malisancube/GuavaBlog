@@ -8,10 +8,13 @@
     <div class="post-stamp">
         @Model.PublishedDate.ToString("MMMM dd, yyyy") <span class="taglist">
             ·
-        @foreach (var tag in Model.Tags.Split(';'))
-        {
-            <a href="/tag/@tag/">@tag</a> 
-        }
+            @if (!string.IsNullOrEmpty(Model.Tags))
+            {
+                foreach (var tag in Model.Tags.Split(';'))
+                {
+                    <a href="/tag/@tag/">@tag</a>
+                }
+            }
     </span>
     <span class="separator"> · </span>
     @if (Model.Featured)

@@ -2,11 +2,11 @@
 using System.Text;
 using GuavaBlog.Web.Models;
 
-namespace Microsoft.AspNetCore.Mvc
+namespace GuavaBlog.Web
 {
     public static class PostExtensions
 	{
-		public static string GetSlug(this Post post)
+		public static string GetSlug(this PostViewModel post)
 		{
 			if(string.IsNullOrWhiteSpace(post.Title))
 				return string.Empty;
@@ -22,5 +22,20 @@ namespace Microsoft.AspNetCore.Mvc
 			}
 			return sb.ToString(0, sb.Length - 1).ToLower();
 		}
-	}
+
+	    public static string GetExcerpt(this PostViewModel post, int length)
+	    {
+	        string excerpt;
+	        if (post.Content.Length > length)
+	        {
+	            excerpt = post.Content.Substring(0, length) + "...";
+	        }
+	        else
+	        {
+	            excerpt = post.Content;
+	        }
+	        return excerpt;
+	    }
+    }
+
 }

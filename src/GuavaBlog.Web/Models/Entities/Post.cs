@@ -23,5 +23,7 @@ namespace GuavaBlog.Web.Models
         public virtual ICollection<Comment> Comments { get; set; }
 
         public virtual ICollection<Tag> Tags { get; set; }
+
+        public bool Featured { get; set; }
     }
 }

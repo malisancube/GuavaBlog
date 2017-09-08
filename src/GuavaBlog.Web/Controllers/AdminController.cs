@@ -2,38 +2,61 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GuavaBlog.Web.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GuavaBlog.Web.Controllers
 {
     public class AdminController : Controller
     {
-        public IActionResult Index()
+        private readonly IPostService postService;
+
+        public AdminController(IPostService postService)
         {
-            return View();
+            this.postService = postService;
+        }
+
+        public async Task<IActionResult> Index(int pageSize = 10, int page = 1, string filter = null)
+        {
+            var posts = await postService.GetPostsAsync(pageSize, page, filter);
+            return View(posts);
         }
 
         public IActionResult NewPost()
         {
-            var post = new PostViewModel();
+            var post = new PostViewModel
+            {
+                PublishedDate = DateTime.Now,
+                IsPublic = true
+            };
             return View(post);
         }
 
         [HttpPost]
-        public IActionResult NewPost(PostViewModel post)
+        public async Task<IActionResult> NewPost(PostViewModel post)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                await postService.SavePostAsync(post);
+                return RedirectToAction("Index");
+            }
+            return View(post);
         }
 
         public IActionResult EditPost(int id)
         {
-            var post = new PostViewModel();
+            var post = this.postService.GetPostById(id);
             return View(post);
         }
 
         [HttpPost]
-        public IActionResult EditPost(PostViewModel post)
+        public async Task<IActionResult> EditPost(PostViewModel post)
         {
+            if (ModelState.IsValid)
+            {
+                await postService.SavePostAsync(post);
+                return RedirectToAction("Index");
+            }
             return View();
         }
 

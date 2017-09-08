@@ -10,7 +10,7 @@
 @foreach (var post in Model)
 {
     <section id="@post.Id" class="post tag-netcore tag-roslyn tag-aspnet tag-net featured">
-        <h3 class="post-title"><a href="post/@post.Url/">@post.Title </a><span class="separator"> &middot; </span>@post.PublishedDate.ToString("MMMM dd, yyyy")
+        <h3 class="post-title"><a href="post/@post.Slug/">@post.Title </a><span class="separator"> &middot; </span>@post.PublishedDate.ToString("MMMM dd, yyyy")
             <span class="taglist"> &middot; 
                 @foreach (var tag in post.Tags.Split(';'))
                 {
@@ -24,7 +24,7 @@
             }
         </h3>
         <section class="post-excerpt">
-            <p>@post.Excerpt <a class="read-more" href="/@post.Url/"> &raquo;&raquo;</a></p>
+            <p>@post.Excerpt <a class="read-more" href="/@post.Slug/"> &raquo;&raquo;</a></p>
         </section>
     </section> 
 }

@@ -5,7 +5,7 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using GuavaBlog.Web.Services;
 
-namespace GuavaBlog.Web.Services
+namespace GuavaBlog.Web
 {
     public static class EmailSenderExtensions
     {

@@ -1,4 +1,5 @@
-﻿
+﻿@model PaginatedList<Post>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -6,3 +7,17 @@
 
 <h2>Posts</h2>
 <hr />
+
+<div class="form-group pull-right">
+    <a asp-controller="Admin" asp-action="NewPost" class="btn btn-default">New Post</a>
+</div>
+
+<div class="row">
+    @foreach (PostViewModel post in Model)
+    {
+        <h4><a asp-controller="Admin" asp-action="EditPost" asp-route-id="@post.Id">@post.Title</a></h4>
+        <p>@post.Excerpt</p>
+        <p>@post.PublishedDate.ToString("MMMM dd, yyyy")</p>
+    }
+
+</div>

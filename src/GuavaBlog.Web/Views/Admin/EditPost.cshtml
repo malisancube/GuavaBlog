@@ -1,34 +1,27 @@
 ﻿@model GuavaBlog.Web.PostViewModel
-
 @{
     ViewData["Title"] = "NewPost";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 @section Styles
-{
+    {
     <environment include="Development">
-
-    </environment>  
+    </environment>
 }
-
-<h2>New Post</h2>
+<h2>Edit Post</h2>
 <hr />
-
 <div class="row">
-
     <div class="col-md-12">
-        <form asp-action="NewPost">
-            
-            <div class="form-group pull-right">
-                <input type="submit" value="Save" class="btn btn-default"/>
-            </div>
-            
-            <input asp-for="PublishedDate" hidden=""/>
+        <form asp-action="EditPost">
 
+            <div class="form-group pull-right">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+
+            <input asp-for="PublishedDate" hidden="" />
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control"/>
+                <input asp-for="Title" class="form-control" />
             </div>
             <hr />
             <div class="form-group">
@@ -37,24 +30,22 @@
             <div class="form-group">
                 <div class="checkbox">
                     <label>
-                        <input asp-for="Featured"/> @Html.DisplayNameFor(model => model.Featured)
+                        <input asp-for="Featured" /> @Html.DisplayNameFor(model => model.Featured)
                     </label>
                 </div>
             </div>
-
         </form>
     </div>
 </div>
-
 @section Scripts
-{
+    {
     <environment include="Development">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
         <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     </environment>
-    
+
     <script type="text/javascript">
         var simplemde = new SimpleMDE({ element: document.getElementById("Content") })
     </script>
-
 }
+

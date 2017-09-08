@@ -18,22 +18,21 @@ namespace GuavaBlog.Web.Controllers
             this.postService = postService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(int pageSize = 10, int page = 1, string filter = null)
         {
-            var posts = postService.GetExcerpts();
+            var posts = await postService.GetPostsAsync(pageSize, page, filter);
             return View(posts);
         }
-
         
-        public IActionResult Read(string slug)
+        public async Task<IActionResult> Read(string slug)
         {
-            var posts = postService.GetPostBySlug(slug);
+            var posts = await postService.GetPostBySlugAsync(slug);
             return View(posts);
         }
 
-        public IActionResult Tag(string tag)
+        public async Task<IActionResult> Tag(string tag)
         {
-            var posts = postService.GetPostsByTag(tag);
+            var posts = await postService.GetPostsByTagAsync(tag);
             return View(posts);
         }
 

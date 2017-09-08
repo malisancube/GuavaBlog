@@ -1,4 +1,5 @@
 using System;
+using GuavaBlog.Web;
 using GuavaBlog.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Xunit;
@@ -10,7 +11,7 @@ namespace GuavaBlog.Tests
         [Fact]
         public void SpaceReplacement()
         {
-            var post = new Post
+            var post = new PostViewModel
             {
                 Title = "What is going on?"
             };
@@ -35,11 +36,11 @@ namespace GuavaBlog.Tests
         [InlineData("Data^base essentials Log(n) algorithms", "data-base-essentials-log(n)-algorithms")]
         public void CreatePostSlug(string input, string expected)
         {
-            var post = new Post
+            var post = new PostViewModel
             {
                 Title = input
             };
-            Assert.Equal(expected, post.GetSlug());
+            Assert.Equal(expected, post.Slug);
         }
     }
 }
