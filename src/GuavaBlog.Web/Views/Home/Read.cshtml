@@ -1,0 +1,28 @@
+﻿@model GuavaBlog.Web.PostViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<article id="23" class="post featured">
+    <div class="post-stamp">
+        @Model.PublishedDate.ToString("MMMM dd, yyyy") <span class="taglist">
+            ·
+        @foreach (var tag in Model.Tags.Split(';'))
+        {
+            <a href="/tag/@tag/">@tag</a> 
+        }
+    </span>
+    <span class="separator"> · </span>
+    @if (Model.Featured)
+    {
+        <i class="fa fa-star-o feature-star"></i>
+    }
+    </div>
+    <h1 class="post-title">@Model.Title</h1>
+    
+    @Html.Raw(Model.Content)
+    
+    <!-- Social widget here -->
+
+</article>

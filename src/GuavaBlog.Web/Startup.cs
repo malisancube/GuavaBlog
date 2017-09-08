@@ -67,6 +67,9 @@ namespace GuavaBlog.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute("blog_route", "post/{*slug}",
+                    defaults: new { controller = "Home", action = "Read" });
             });
         }
     }

@@ -7,7 +7,8 @@ namespace GuavaBlog.Web.Services
         List<PostViewModel> GetPosts(int pageSize = 10, int page = 1, string filter = null);
         List<PostViewModel> GetExcerpts(int pageSize = 10, int page = 1, string filter = null);
         string GetExcerpt(int postId);
-        string GetStory(int postId);
+        string GetPost(int postId);
         void SavePost(PostViewModel post);
+        PostViewModel GetPostBySlug(string slug);
     }
 }
