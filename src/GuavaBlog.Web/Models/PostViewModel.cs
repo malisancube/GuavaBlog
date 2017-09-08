@@ -18,7 +18,11 @@ namespace GuavaBlog.Web
 
         public string Content { get; set; }
 
+        public string ContentHtml { get; set; }
+
         public bool Featured { get; set; }
+
+        public DateTime EditedDate { get; set; }
 
     }
 }

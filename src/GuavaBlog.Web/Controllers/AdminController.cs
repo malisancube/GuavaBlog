@@ -37,18 +37,22 @@ namespace GuavaBlog.Web.Controllers
             return View();
         }
 
-        public IActionResult EditSettings(int id)
+        public IActionResult Settings()
         {
             var blog = new BlogViewModel();
             return View(blog);
         }
 
         [HttpPost]
-        public IActionResult EditPost(BlogViewModel blog)
+        public IActionResult Settings(BlogViewModel blog)
         {
             return View();
         }
 
+        public IActionResult Experiental()
+        {
+            return View();
+        }
 
 
     }

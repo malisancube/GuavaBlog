@@ -86,7 +86,7 @@
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse slimscrollsidebar">
                 
-                <div class="navbar-header">
+                <div class="navbar-header ">
                     <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></a>
                     <div class="top-left-part"><a class="logo" href="@metadata.Url"><b><img src="" alt="home" /></b><span class="hidden-xs"></span></a></div>
                     
@@ -106,16 +106,19 @@
 
                 </div>
 
-                
-
                 <ul class="nav" id="side-menu">
                     <li style="padding: 10px 0 0;">
-                        <a asp-controller="Admin" asp-action="NewPost" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">New Post</span></a>
+                        <a asp-controller="Admin" asp-action="NewPost"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">New Post</span></a>
                     </li>
                     <li>
-                        <a asp-controller="Admin" asp-action="Index" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Stories</span></a>
+                        <a asp-controller="Admin" asp-action="Index"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Posts</span></a>
                     </li>
-
+                    <li>
+                        <a asp-controller="Admin" asp-action="Settings"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Settings</span></a>
+                    </li>
+                    <li>
+                        <a asp-controller="Admin" asp-action="Experiental"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Experimental</span></a>
+                    </li>
                 </ul>
                 <div class="center p-20">
                     <span class="hide-menu"><a href="@metadata.Url" target="_blank" class="btn btn-danger btn-block btn-rounded waves-effect waves-light">View Site</a></span>
@@ -129,9 +132,6 @@
                 
                 @RenderBody()
 
-            </div>
-            <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2017 &copy; @metadata.Title</footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
