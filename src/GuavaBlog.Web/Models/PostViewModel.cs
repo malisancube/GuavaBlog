@@ -29,7 +29,7 @@ namespace GuavaBlog.Web
 
         public bool IsPublic { get; internal set; }
 
-        public string Excerpt => this.GetExcerpt(300);
+        public string Excerpt => this.GetExcerpt(400);
 
         public static implicit operator Post(PostViewModel post)
         {

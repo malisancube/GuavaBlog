@@ -32,14 +32,17 @@ namespace GuavaBlog.Web.Services
             var post = (Post)model;
             if (model.Id != 0)
             {
-                var item = _guavaDbContext.Posts.Find(model.Id);
+                var item = await _guavaDbContext
+                    .Posts
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(p => p.Id == model.Id);
                 if (item != null && !delete)
                 {
-                    _guavaDbContext.Entry(item).State = EntityState.Modified;
+                    _guavaDbContext.Entry(post).State = EntityState.Modified;
                 }
                 else if (item != null)
                 {
-                    _guavaDbContext.Entry(item).State = EntityState.Deleted;
+                    _guavaDbContext.Entry(post).State = EntityState.Deleted;
                 }
             }
             else
