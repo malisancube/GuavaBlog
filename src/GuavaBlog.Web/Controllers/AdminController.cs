@@ -72,9 +72,10 @@ namespace GuavaBlog.Web.Controllers
             return View();
         }
 
-        public IActionResult Experiental()
+        public IActionResult Experimental()
         {
-            return View();
+            var blog = new BlogViewModel();
+            return View(blog);
         }
 
 
