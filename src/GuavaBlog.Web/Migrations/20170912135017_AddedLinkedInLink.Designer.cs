@@ -11,9 +11,10 @@ using System;
 namespace GuavaBlog.Web.Migrations
 {
     [DbContext(typeof(GuavaDbContext))]
-    partial class GuavaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170912135017_AddedLinkedInLink")]
+    partial class AddedLinkedInLink
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

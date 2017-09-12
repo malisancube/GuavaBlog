@@ -6,3 +6,63 @@
 }
 <h2>Settings</h2>
 <hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Settings" enctype="multipart/form-data">
+            
+            <input name="CoverName" hidden value="@Model.CoverFileName"/>
+            <input name="LogoName" hidden value="@Model.LogoFileName"/>
+
+            <div class="form-group pull-right">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+            
+            <input asp-for="Id" hidden />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Bio" class="control-label"></label>
+                <input asp-for="Bio" class="form-control" />
+            </div>
+            <hr/>
+            
+            <div class="form-group">
+                <a id="logo" href="@Model.Url"><img src="~/@Model.LogoFileName" /></a>
+                <label asp-for="Logo" class="control-label"></label>
+                <input asp-for="Logo" type="file" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <a id="logo" href="@Model.Cover"><img src="~/@Model.CoverFileName" /></a>
+                <label asp-for="Cover" class="control-label"></label>
+                <input asp-for="Cover" type="file" class="form-control"/>
+            </div>
+            <hr/>
+
+            <div class="form-group">
+                <label asp-for="FacebookLink" class="control-label"></label>
+                <input asp-for="FacebookLink" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LinkedInLink" class="control-label"></label>
+                <input asp-for="LinkedInLink" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailAddress" class="control-label"></label>
+                <input asp-for="EmailAddress" class="form-control" />
+            </div>
+            <hr />
+            <div class="form-group">
+                <label asp-for="PostsPerPage" class="control-label"></label>
+                <input asp-for="PostsPerPage" class="form-control" />
+            </div>
+            
+        </form>
+    </div>
+</div>

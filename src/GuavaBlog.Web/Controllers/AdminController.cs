@@ -10,10 +10,12 @@ namespace GuavaBlog.Web.Controllers
     public class AdminController : Controller
     {
         private readonly IPostService postService;
+        private readonly IBlogService blogService;
 
-        public AdminController(IPostService postService)
+        public AdminController(IBlogService blogService, IPostService postService)
         {
             this.postService = postService;
+            this.blogService = blogService;
         }
 
         public async Task<IActionResult> Index(int pageSize = 10, int page = 1, string filter = null)
@@ -57,19 +59,24 @@ namespace GuavaBlog.Web.Controllers
                 await postService.SavePostAsync(post);
                 return RedirectToAction("Index");
             }
-            return View();
+            return View(post);
         }
 
-        public IActionResult Settings()
+        public async Task<IActionResult> Settings()
         {
-            var blog = new BlogViewModel();
+            var blog = await blogService.GetMetadata();
             return View(blog);
         }
 
         [HttpPost]
-        public IActionResult Settings(BlogViewModel blog)
+        public async Task<IActionResult> Settings(BlogViewModel blog)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                await blogService.SaveMetaData(blog);
+                return RedirectToAction("Index");
+            }
+            return View(blog);
         }
 
         public IActionResult Experimental()

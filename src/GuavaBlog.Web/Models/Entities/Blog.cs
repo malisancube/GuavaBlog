@@ -24,6 +24,10 @@ namespace GuavaBlog.Web
 
         public string FacebookLink { get; set; }
 
+        public string LinkedInLink { get; set; }
+
+        public string EmailAddress { get; set; }
+
         public string Theme { get; set; }
     }
 }

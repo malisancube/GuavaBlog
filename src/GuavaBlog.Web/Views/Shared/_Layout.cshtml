@@ -3,7 +3,7 @@
 @inject IBlogService BlogService
 
 @{
-    var metadata = BlogService.GetMetadata();
+    var metadata = await BlogService.GetMetadata();
 }
 
 <!DOCTYPE html>
@@ -73,15 +73,36 @@
 <body class="home-template">
     
 <header id="header">
-    <a id="logo" href="@metadata.Url"><img src="@metadata.Logo" alt="@metadata.Title" /></a>
+    <a id="logo" href="@metadata.Url"><img src="~/@metadata.LogoFileName" alt="@metadata.Title" /></a>
     <h1><a href="@metadata.Url">@metadata.Title</a></h1>
     <p>@metadata.Description</p>
     <div id="follow-icons">
-        <a href="http://facebook.com/malisa.ncube"><i class="fa fa-facebook-square fa-2x"></i></a>
-        <a href="http://twitter.com/malisancube"><i class="fa fa-twitter-square fa-2x"></i></a>
-        <a href="http://linkedin.com/in/malisa-ncube-a9b28b1"><i class="fa fa-linkedin-square fa-2x"></i></a>
-        <a href="mailto:inbox@malisancube.com"><i class="fa fa-envelope-square fa-2x"></i></a>
-        <a href="http://www.malisancube.com/rss"><i class="fa fa-rss-square fa-2x"></i></a> 
+        
+        @if (string.IsNullOrWhiteSpace(metadata.FacebookLink))
+        {
+            <a href="@metadata.TwitterHandle)"><i class="fa fa-github-square fa-2x"></i></a>
+        }
+
+        @if (string.IsNullOrWhiteSpace(metadata.FacebookLink))
+        {
+            <a href="@metadata.FacebookLink"><i class="fa fa-facebook-square fa-2x"></i></a>
+        }
+        @if (string.IsNullOrWhiteSpace(metadata.TwitterHandle))
+        {
+            <a href="@metadata.TwitterHandle"><i class="fa fa-twitter-square fa-2x"></i></a>
+        }
+        @if (string.IsNullOrWhiteSpace(metadata.LinkedInLink))
+        {
+            <a href="@metadata.LinkedInLink"><i class="fa fa-linkedin-square fa-2x"></i></a>
+        }
+        @if (string.IsNullOrWhiteSpace(metadata.EmailAddress))
+        {
+            <a href="mailto:@metadata.EmailAddress"><i class="fa fa-envelope-square fa-2x"></i></a>
+        }
+        @if (string.IsNullOrWhiteSpace(metadata.Url))
+        {
+            <a href="@($"{metadata.Url}/rss/")"><i class="fa fa-rss-square fa-2x"></i></a>
+        }
     </div>                                                                  
 
     <!--

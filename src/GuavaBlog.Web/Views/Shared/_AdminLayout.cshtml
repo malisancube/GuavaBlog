@@ -3,7 +3,7 @@
 @inject IBlogService BlogService
 
 @{
-    var metadata = BlogService.GetMetadata();
+    var metadata = await BlogService.GetMetadata();
 }
 
 <!DOCTYPE html>

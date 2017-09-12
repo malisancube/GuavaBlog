@@ -1,7 +1,10 @@
-﻿namespace GuavaBlog.Web.Services
+﻿using System.Threading.Tasks;
+
+namespace GuavaBlog.Web.Services
 {
     public interface IBlogService
     {
-        BlogViewModel GetMetadata();
+        Task<BlogViewModel> GetMetadata();
+        Task<int> SaveMetaData(BlogViewModel model);
     }
 }
